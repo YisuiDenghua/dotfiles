@@ -505,7 +505,7 @@ in {
         "--ozone-platform-hint=auto"
       ];
     })
-    (pkgs.callPackage ./hmcl-bin.nix {})
+    # (pkgs.callPackage ./hmcl-bin.nix {})
     steam-run
     virt-manager
     libsForQt5.breeze-gtk

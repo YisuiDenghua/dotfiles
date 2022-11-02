@@ -548,7 +548,7 @@ in {
 
   services.emacs = {
     enable = true;
-    defaultEditor = true;
+    # defaultEditor = true;
   };
 
   system.stateVersion = "22.05"; # DONT TOUCH THIS

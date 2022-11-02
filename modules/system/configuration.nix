@@ -79,7 +79,7 @@ in {
     '';
     settings = {
       auto-optimise-store = true;
-      allowed-users = [ "sioodmy" ];
+      allowed-users = [ "yisui" ];
       substituters = [
         "https://cache.nixos.org"
         "https://fortuneteller2k.cachix.org"
@@ -199,8 +199,10 @@ in {
     fcitx5.addons = with pkgs; [ fcitx5-rime fcitx5-chinese-addons fcitx5-table-extra ];
   };
 
+
+
   networking = {
-    hostName = "legion-y9000x"
+    # hostName = "legion-y9000x"
     # nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager = {
       enable = true;

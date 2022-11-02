@@ -202,7 +202,6 @@ in {
 
 
   networking = {
-    # hostName = "legion-y9000x"
     # nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager = {
       enable = true;
@@ -299,6 +298,7 @@ in {
       jack.enable = true;
     };
   }; 
+
   systemd.services = {
     seatd = {
       enable = true;
@@ -327,7 +327,7 @@ in {
       "networkmanager"
     ];
     uid = 1000;
-    shell = pkgs.zsh;
+    # shell = pkgs.zsh;
 
   };
 

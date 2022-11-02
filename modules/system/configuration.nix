@@ -200,6 +200,7 @@ in {
   };
 
   networking = {
+    hostName = "legion-y9000x"
     # nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager = {
       enable = true;
@@ -213,6 +214,7 @@ in {
       allowPing = false;
       logReversePathDrops = true;
     };
+
   };
 
   console = {
@@ -236,23 +238,23 @@ in {
   environment.etc."greetd/environments".text = ''
     Hyprland
   '';
-  services = {
-    syncthing = {
-      enable = true;
-      openDefaultPorts = true;
-      user = "sioodmy";
-      group = "wheel";
-      dataDir = "/home/sioodmy/syncthing";
-      configDir = "/home/sioodmy/.config/syncthing/";
-      systemService = true;
+  # services = {
+  #   syncthing = {
+  #     enable = true;
+  #     openDefaultPorts = true;
+  #     user = "";
+  #     group = "wheel";
+  #     dataDir = "/home/sioodmy/syncthing";
+  #     configDir = "/home/sioodmy/.config/syncthing/";
+  #     systemService = true;
 
-    };
+  #   };
     greetd = {
       enable = true;
       settings = rec {
         initial_session = {
           command = "Hyprland";
-          user = "sioodmy";
+          user = "yisui";
         };
         default_session = initial_session;
       };

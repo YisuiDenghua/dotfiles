@@ -57,7 +57,7 @@
               ];
             })
 
-            { networking.hostName = legion-y9000x; }
+            { networking.hostName = hostname; }
             (./. + "/hosts/${hostname}/system.nix")
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
             ./modules/system/configuration.nix
@@ -68,7 +68,7 @@
                 useUserPackages = true;
                 useGlobalPkgs = true;
                 extraSpecialArgs = { inherit inputs; };
-                users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
+                users.yisui = (./. + "/hosts/${hostname}/user.nix");
               };
               nixpkgs.overlays = [
                 (final: prev: {
@@ -107,8 +107,8 @@
         };
     in {
       nixosConfigurations = {
-        graphene = mkSystem inputs.nixpkgs "x86_64-linux" "nixos";
-        thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "legion-y9000x";
+        nixos = mkSystem inputs.nixpkgs "x86_64-linux" "nixos";
+        legion-y9000x = mkSystem inputs.nixpkgs "x86_64-linux" "legion-y9000x";
       };
 
       devShell.${system} = pkgs.mkShell {

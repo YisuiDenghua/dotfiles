@@ -6,6 +6,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     hyprland.url = "github:hyprwm/Hyprland/";
+    nixos-cn.url = "github:nixos-cn/flakes";
+    nixos-cn.inputs.nixpkgs.follows = "nixpkgs";
+    nur.url = "github:nix-community/NUR";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -17,7 +20,7 @@
       flake = false;
     };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nixos-cn, nur,  ... }:
     let
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -27,7 +30,34 @@
         pkgs.lib.nixosSystem {
           system = system;
           modules = [
-            { networking.hostName = hostname; }
+            ({ ... }: {
+              environment.systemPackages = [
+                nixos-cn.legacyPackages.${system}.netease-cloud-music
+                nixos-cn.legacyPackages.${system}.wechat-uos
+              ];
+              nix.binaryCaches = [
+                "https://nixos-cn.cachix.org"
+              ];
+              nix.binaryCachePublicKeys = [
+	          "nixos-cn.cachix.org-1:L0jEaL6w7kwQOPlLoCR3ADx+E3Q8SEFEcB9Jaibl0Xg="
+	          ];
+
+              imports = [
+                nixos-cn.nixosModules.nixos-cn-registries
+                nixos-cn.nixosModules.nixos-cn
+              ];
+            })
+
+            ({ config, ... }: {
+              environment.systemPackages = [
+	        # config.nur.repos.xddxdd.qqmusic
+                config.nur.repos.xddxdd.fcitx5-breeze
+	            config.nur.repos.linyinfeng.wemeet
+                config.nur.repos.linyinfeng.clash-for-windows
+              ];
+            })
+
+            { networking.hostName = legion-y9000x; }
             (./. + "/hosts/${hostname}/system.nix")
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
             ./modules/system/configuration.nix
@@ -77,8 +107,8 @@
         };
     in {
       nixosConfigurations = {
-        graphene = mkSystem inputs.nixpkgs "x86_64-linux" "graphene";
-        thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "thinkpad";
+        graphene = mkSystem inputs.nixpkgs "x86_64-linux" "nixos";
+        thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "legion-y9000x";
       };
 
       devShell.${system} = pkgs.mkShell {

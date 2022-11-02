@@ -34,6 +34,21 @@
     },
     "flake-utils": {
       "locked": {
+        "lastModified": 1638122382,
+        "narHash": "sha256-sQzZzAbvKEqN9s0bzWuYmRaA03v40gaJ4+iL1LXjaeI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "74f7e4319258e287b0f9cb95426c9853b282730b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "locked": {
         "lastModified": 1667077288,
         "narHash": "sha256-bdC8sFNDpT0HK74u9fUkpbf1MEzVYJ+ka7NXCdgBoaA=",
         "owner": "numtide",
@@ -74,11 +89,11 @@
         "wlroots": "wlroots"
       },
       "locked": {
-        "lastModified": 1667387057,
-        "narHash": "sha256-LwBFpS4PeJI+NRdRixkfGRBQ6jYCByAQPbE6A6ZHsvk=",
+        "lastModified": 1667402139,
+        "narHash": "sha256-/ipftYpZsTOoZZQPbqntY8qI6KYvdMACcSzVnRKaCaU=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "a2b8e3b34edcd443bcda47f4209296c9ad1e4fa2",
+        "rev": "5b548f5bc352a09bf9cf46a8eee0888abbcb2cec",
         "type": "github"
       },
       "original": {
@@ -89,7 +104,7 @@
     },
     "lib-aggregate": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
@@ -103,6 +118,27 @@
       "original": {
         "owner": "nix-community",
         "repo": "lib-aggregate",
+        "type": "github"
+      }
+    },
+    "nixos-cn": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1667356393,
+        "narHash": "sha256-4KYMOgKJr6KSM0OqlIFedscpUQ91B8su6l2nk9Mo3T8=",
+        "owner": "nixos-cn",
+        "repo": "flakes",
+        "rev": "fcf89848585a10829650bbd0d949d57332ca6811",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos-cn",
+        "repo": "flakes",
         "type": "github"
       }
     },
@@ -190,12 +226,29 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1667398261,
+        "narHash": "sha256-fnTaNwUVjco9a3nxgg47JRf3Zt21bk7n2YBa/M1w7gM=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "b55b9f795d31a3e4f27bb944178f9e5fedbcb8f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "nixos-cn": "nixos-cn",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-wayland": "nixpkgs-wayland",
+        "nur": "nur",
         "waybar": "waybar"
       }
     },

@@ -241,16 +241,16 @@ in {
     Hyprland
   '';
   services = {
-  #   syncthing = {
-  #     enable = true;
-  #     openDefaultPorts = true;
-  #     user = "";
-  #     group = "wheel";
-  #     dataDir = "/home/sioodmy/syncthing";
-  #     configDir = "/home/sioodmy/.config/syncthing/";
-  #     systemService = true;
+    syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      user = "yisui";
+      group = "wheel";
+      dataDir = "/home/yisui/syncthing";
+      configDir = "/home/yisui/.config/syncthing/";
+      systemService = true;
 
-  #   };
+    };
     greetd = {
       enable = true;
       settings = rec {
@@ -298,7 +298,7 @@ in {
       pulse.enable = true;
       jack.enable = true;
     };
-  };  
+  }; 
   systemd.services = {
     seatd = {
       enable = true;

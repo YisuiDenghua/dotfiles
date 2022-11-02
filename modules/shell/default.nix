@@ -117,17 +117,17 @@ in {
       ];
     };
 
-    programs.git = {
-      enable = true;
-      userName = "sioodmy";
-      userEmail = "sioodmy@tuta.io";
-      extraConfig = {
-        init = { defaultBranch = "main"; };
-        delta = {
-          syntax-theme = "Nord";
-          line-numbers = true;
-        };
-      };
+    # programs.git = {
+    #   enable = true;
+    #   userName = "sioodmy";
+    #   userEmail = "sioodmy@tuta.io";
+    #   extraConfig = {
+    #     init = { defaultBranch = "main"; };
+    #     delta = {
+    #       syntax-theme = "Nord";
+    #       line-numbers = true;
+    #     };
+    #   };
       lfs.enable = true;
       delta.enable = true;
       aliases = {

@@ -240,7 +240,7 @@ in {
   environment.etc."greetd/environments".text = ''
     Hyprland
   '';
-  # services = {
+  services = {
   #   syncthing = {
   #     enable = true;
   #     openDefaultPorts = true;
@@ -298,7 +298,7 @@ in {
       pulse.enable = true;
       jack.enable = true;
     };
-  };
+  };  
   systemd.services = {
     seatd = {
       enable = true;

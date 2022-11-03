@@ -119,6 +119,75 @@ in {
     dbus-hyprland-environment
     configure-gtk
     cryptsetup
+
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    flameshot
+    ocs-url
+    firefox-wayland
+    vulkan-tools
+    glxinfo
+    nvidia-offload
+    (google-chrome.override {
+      commandLineArgs = [
+        "--enable-features=WebUIDarkMode"
+        "--force-dark-mode"
+      ];
+    })
+    libsForQt5.ark
+    hyfetch
+    tdesktop
+    libsForQt5.kate
+    git
+    github-cli
+    networkmanagerapplet
+    (vscode.override {
+      commandLineArgs = [
+        # "--enable-features=UseOzonePlatform"
+        # "--ozone-platform=wayland"
+        "--ozone-platform-hint=auto"
+      ];
+    })
+    # (pkgs.callPackage ./hmcl-bin.nix {})
+    steam-run
+    virt-manager
+    libsForQt5.breeze-gtk
+    neofetch
+    # krita
+    mpv
+    jdk8
+    linphone
+    openvpn
+    papirus-folders
+    gimp
+    papirus-icon-theme
+    libsForQt5.qtstyleplugin-kvantum
+    # gnome.gnome-terminal
+    # gnome.gnome-tweaks
+    # gnomeExtensions.dash-to-dock
+    # gnome.gedit
+    # pavucontrol
+    unrar
+    virtualenv
+    python310
+    aria2
+    kleopatra
+    # gnomeExtensions.blur-my-shell
+    # pop-icon-theme
+    # marwaita-pop_os
+    blackbox-terminal
+    gnomeExtensions.tray-icons-reloaded
+    # gnomeExtensions.dash-to-panel
+    pfetch
+    whitesur-icon-theme
+    # whitesur-gtk-theme
+    netease-cloud-music-gtk
+    gparted
+    obs-studio
+    distrobox
+    xorg.xhost
+
+
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -173,7 +242,7 @@ in {
     consoleLogLevel = 0;
     initrd.verbose = false;
     kernelPackages = pkgs.linuxPackages_latest;
-    extraModprobeConfig = "options hid_apple fnmode=1";
+    extraModprobeConfig = "options hid_apple fnmode=1 kvm_intel nested=1";
     loader = {
       systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
@@ -462,13 +531,13 @@ in {
   };
 
   services.flatpak.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
     # RISC-V
   boot.binfmt.emulatedSystems = [
     "riscv64-linux"
   ];
-  boot.extraModprobeConfig = "options kvm_intel nested=1";
+
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
 
@@ -476,75 +545,6 @@ in {
   users.extraGroups.vboxusers.members = [ "yisui" ];
   virtualisation.docker.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    flameshot
-    ocs-url
-    firefox-wayland
-    vulkan-tools
-    glxinfo
-    nvidia-offload
-    (google-chrome.override {
-      commandLineArgs = [
-        "--enable-features=WebUIDarkMode"
-        "--force-dark-mode"
-      ];
-    })
-    libsForQt5.ark
-    hyfetch
-    tdesktop
-    libsForQt5.kate
-    git
-    github-cli
-    networkmanagerapplet
-    (vscode.override {
-      commandLineArgs = [
-        # "--enable-features=UseOzonePlatform"
-        # "--ozone-platform=wayland"
-        "--ozone-platform-hint=auto"
-      ];
-    })
-    # (pkgs.callPackage ./hmcl-bin.nix {})
-    steam-run
-    virt-manager
-    libsForQt5.breeze-gtk
-    neofetch
-    # krita
-    mpv
-    jdk8
-    linphone
-    openvpn
-    papirus-folders
-    gimp
-    papirus-icon-theme
-    libsForQt5.qtstyleplugin-kvantum
-    # gnome.gnome-terminal
-    # gnome.gnome-tweaks
-    # gnomeExtensions.dash-to-dock
-    # gnome.gedit
-    # pavucontrol
-    unrar
-    virtualenv
-    python310
-    aria2
-    kleopatra
-    # gnomeExtensions.blur-my-shell
-    # pop-icon-theme
-    # marwaita-pop_os
-    blackbox-terminal
-    gnomeExtensions.tray-icons-reloaded
-    # gnomeExtensions.dash-to-panel
-    pfetch
-    whitesur-icon-theme
-    # whitesur-gtk-theme
-    netease-cloud-music-gtk
-    gparted
-    obs-studio
-    distrobox
-    xorg.xhost
-
-  ];
 
   services.emacs = {
     enable = true;
